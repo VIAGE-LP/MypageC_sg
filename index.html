@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訂單查詢</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+</head>
+
+<body>
+    <img id="logo" src="img/logo.svg" alt="">
+    <img id="Mypage_link" src="img/Mypage_link.png" alt="" style="cursor:pointer;">
+    <h2 style="display:none" class="err">無法查詢到資料</h2>
+    <h3 class="text">請點擊按鈕確認您最新一筆訂單內容<br>
+    *請使用與訂購時相同瀏覽器頁面，若無法查詢到資料請洽客服 Facebook：<a href="https://www.facebook.com/Viage.sg" target="_blank">https://www.facebook.com/Viage.sg</a></h3>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        $("#Mypage_link").click(function (e) {
+            e.preventDefault();
+            // 從localStorage取出order_token
+            let orderToken = JSON.parse(localStorage.getItem('orderData'));
+
+            if (!orderToken) {
+                $(".err").attr("style","display:block;");
+            } else {
+                orderToken = orderToken.order_token;
+                // 用order_token去開Mypage
+                window.open(`https://viagebeautybra.com/Mypage_sg/?type=10&order_token=${orderToken}`);
+            }
+        });
+    </script>
+    <!-- {"order_id":300139202,"data":{"order_id":300139208,"lp_param_ga1":"null","lp_param_ga2":"null","lp_param_ga3":"null","promotion_code":"vg01b","payment_total":1360,"currency":"TWD","products":[{"product_code":"4560449973175","product_name":"Viage晚安立體美型內衣 輕裸天空藍-S","quantity":1,"price":1360}],"name01":"測試","name02":"測試","customer_id":20047626,"shipping_date":"2022/02/26","regular_flag":0,"change_to_regular_enable":true,"update_order_enable":true,"append_item_enable":true,"change_to_not_regular_enable":true},"result":0,"order_token":"ad83249cee539f181c0f2eb1d492a8aef56636facd1b9d7bac4e828b9bc0ef6260415960d5169520"}  -->
+</body>
+
+</html>

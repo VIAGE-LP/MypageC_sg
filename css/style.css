@@ -1,0 +1,34 @@
+html,body{
+   background-color: #FFE9E9;
+}
+
+#logo{
+    display: block;
+    margin: 0 auto;
+    width: 16%;
+}
+
+#Mypage_link{
+    display: block;
+    margin: 1rem auto;
+    width: 20%;
+}
+
+.text{
+    text-align: center;
+}
+
+.err{
+    text-align: center;
+    color:red;
+}
+
+@media (max-width: 768px) {
+    #logo{
+        width: 50%;
+    }
+    
+    #Mypage_link{
+        width: 60%;
+    }    
+}
